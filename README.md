@@ -31,3 +31,23 @@ Inicializar o servidor node:
     npm run dev
 
 A aplicação estará disponível em http://localhost:3000
+
+### Executando o frontend
+
+Realizar o clone do projeto:
+
+    git clone https://github.com/USER/developers-map.git
+
+Acesse a pasta do backend:
+    
+    cd frontend
+
+Rode o comando para instalar as dependências npm:
+
+    npm install
+
+Inicializar o servidor node:
+    
+    npm run start
+
+A aplicação estará disponível em http://localhost:3001 (é necessário executar em conjunto com o backend)
