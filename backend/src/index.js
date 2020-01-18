@@ -2,8 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes.js");
 const cors = require("cors");
+const http = require("http");
+const { setupWebSocket } = require("./websocket");
 
 const app = express();
+const server = http.Server(app);
+
+setupWebSocket(server);
 
 app.use(cors());
 app.use(express.json());
@@ -16,4 +21,4 @@ mongoose.connect(
   }
 );
 
-app.listen(3000);
+server.listen(3000);

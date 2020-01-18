@@ -1,6 +1,7 @@
 const axios = require("axios");
 const DevModel = require("../models/Dev");
 const convertStringToArray = require("../utils/convertStringToArray");
+const { findConnections, sendMessage } = require("../websocket");
 
 /**
  * Tipos de parâmetro:
@@ -42,6 +43,13 @@ module.exports = {
         techs: techsList,
         location
       });
+
+      const sendSocketMessageTo = findConnections(
+        { latitude, longitude },
+        techsList
+      );
+
+      sendMessage(sendSocketMessageTo, "new-dev", dev);
     }
 
     return response.json(dev);

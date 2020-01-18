@@ -14,6 +14,7 @@ import {
 } from "expo-location";
 import { MaterialIcons } from "@expo/vector-icons";
 import api from "../services/api";
+import { connect, disconnect, subscribeToNewDevs } from "../services/socket";
 
 function Main({ navigation }) {
   const [devs, setDevs] = useState([]);
@@ -39,6 +40,12 @@ function Main({ navigation }) {
     }
   }
 
+  function setupWebSocket() {
+    disconnect();
+    const { latitude, longitude } = currentRegion;
+    connect(latitude, longitude, techs);
+  }
+
   async function loadData() {
     const { latitude, longitude } = currentRegion;
 
@@ -46,7 +53,7 @@ function Main({ navigation }) {
       .get(`/search?latitude=${latitude}&longitude=${longitude}&techs=${techs}`)
       .catch(error => console.log(JSON.stringify(error.response)));
 
-    console.log(response.data.devs);
+    setupWebSocket();
     setDevs(response.data.devs);
   }
 
@@ -57,6 +64,15 @@ function Main({ navigation }) {
   useEffect(() => {
     loadInitialPosition();
   }, []);
+
+  useEffect(() => {
+    subscribeToNewDevs(dev => {
+      const devsCopy = [...devs];
+      devsCopy.push(dev);
+      console.log("DevsCopy", devsCopy);
+      setDevs(devsCopy);
+    });
+  }, [devs]);
 
   if (!currentRegion) {
     return null;
