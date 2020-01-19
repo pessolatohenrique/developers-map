@@ -4,6 +4,12 @@
 
 Projeto desenvolvido em 3 etapas: backend, frontend e mobile. O objetivo é gerenciar e encontrar desenvolvedores na região próxima, inclusive utilizando geolocalização. Baseado na décima semana Omnistack da Rocketseat (https://rocketseat.com.br/).
 
+### Funcionalidades
+- Cadastro de desenvolvedores via backend e frontend
+- Integração com a API do github
+- Geolocalização de usuários cadastrados no app, em um raio de 10km do usuário conectado
+- Exibição do perfil do github no app via webview
+
 ### Tecnologias
 
 - Backend em Node.js
