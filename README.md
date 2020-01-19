@@ -40,7 +40,7 @@ Realizar o clone do projeto:
 
 Acesse a pasta do backend:
     
-    cd frontend
+    cd front
 
 Rode o comando para instalar as dependências npm:
 
@@ -51,3 +51,23 @@ Inicializar o servidor node:
     npm run start
 
 A aplicação estará disponível em http://localhost:3001 (é necessário executar em conjunto com o backend)
+
+### Executando o mobile
+
+Importante: É necessário ter o expo instalado na máquina de desenvolvimento, bem como o aplicativo no dispositivo móvel. Mais informações em: https://docs.expo.io/versions/latest/get-started/installation/
+
+Realizar o clone do projeto:
+
+    git clone https://github.com/USER/developers-map.git
+
+Acesse a pasta do backend:
+    
+    cd mobile
+
+Rode o comando para instalar as dependências npm:
+
+    npm install
+
+Executar o comando abaixo, e realizar a leitura do qrcode no dispositivo móvel, com o aplicativo do expo:
+    
+    yarn start
